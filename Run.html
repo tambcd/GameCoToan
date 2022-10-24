@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>GAME CỜ VUA</title>
+</head>
+<link rel="icon" href="Icon/icon.png"/>
+<link rel="stylesheet" type="text/css" href="CSS/style.css"/>
+<script type="text/javascript" src="JS/Sources.js"></script>
+<script type="text/javascript" src="JS/KhoiTao.js"></script>
+<script type="text/javascript" src="JS/Function.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Tot.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Vua.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Xe.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Tuong.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Ma.js"></script>
+<script type="text/javascript" src="JS/XacDinhDuongDi/Hau.js"></script>
+
+<script>
+	var isClick = false, isQuanDo = false;
+	var Location = "00";
+	var PointDo = 0, PointDen = 0;
+	
+	function KhoiTao(){
+		VeBanCoTrangDen();
+		DatCo();
+		document.getElementById("PointCoDo").innerHTML = "Point: 0" ;
+		document.getElementById("PointCoDen").innerHTML = "Point: 0";
+		PointDo = 0;
+		PointDen = 0;
+		isClick = true;
+		isQuanDo = true;
+	}
+
+	// Cờ đỏ đi trước
+	function Click(id){
+    
+		var X = id.substring(0, id.indexOf('_'));
+		var Y = id.substring(id.indexOf('_')+1);  
+    
+		isClick = !isClick;
+		if(isClick){
+			if(isCoDo(X, Y) != isQuanDo){
+			isClick = !isClick;
+			return;
+			}	
+		}
+		if(isClick){
+			var Name = GetName(id);
+			Name = Name.substring(0, Name.indexOf('_'));
+			Location = id;
+			
+			// Kiểm tra này là quân cờ nào để xác định đường đi
+			switch(Name){
+				case '1':
+					Xe(id);
+				break;
+				
+				case '2':
+					Ma(id);
+				break;				
+				case '4':
+					Tuong(id);
+				break;
+				case '5':
+					Tuong(id);
+				break;
+				case '6':
+					Tuong(id);
+				break;
+				case '7':
+					Tuong(id);
+				break;
+				case '8':
+					Tuong(id);
+				break;
+				case '3':
+					Tuong(id);
+				break;
+				
+				case '9':
+					Hau(id);
+				break;								
+				
+				default:
+				
+					// Không click vào ổ chức quân cờ nào
+					isClick = !isClick;
+				break;
+			}
+		 }else{
+			 var Name = GetName(id);
+			 Name = Name.substring(0, Name.indexOf('_'));
+			 
+			 if(DiChuyen(Location, id)){
+				 if(isQuanDo){
+					 PointDo += GetDiem(Name);
+					 if(isChieuVua(Name) || PointDo == 880){
+					 	alert("QUÂN ĐỎ ĐÃ CHIẾN THẮNG");
+						KhoiTao();
+					 }
+					 document.getElementById("PointCoDo").innerHTML = "Point: " + PointDo;
+				 }else{
+					 PointDen += GetDiem(Name);
+					 if(isChieuVua(Name) || PointDen == 880){
+					 	alert("QUÂN ĐEN ĐÃ CHIẾN THẮNG");
+						KhoiTao();
+					 }
+					 document.getElementById("PointCoDen").innerHTML = "Point: " + PointDen;
+				 }
+				isQuanDo = !isQuanDo; 
+				LuotDi();
+			 }
+			 VeBanCoTrangDen();
+		 }
+	}
+</script>
+
+<body onload="KhoiTao()">
+
+<div id="divMain">
+	<div id="divNguoiChoiCoDen">
+      <table id="tblNguoiCoDen">
+        <tr>
+          <td><img id="iCoDen" src="User/User_Enb.png"  alt=""/></td>
+         </tr>
+         <tr>
+          <td id="PointCoDen">Point: 0</td>
+        </tr>
+    	</table>
+    </div>
+
+	<div id="divBanCo">
+        <table id="BanCo">
+            <tr>
+                <td id="1_1" onclick="Click(this.id)"><img id="i11"/></td>
+                <td id="1_2" onclick="Click(this.id)"><img id="i12"/></td>
+                <td id="1_3" onclick="Click(this.id)"><img id="i13"/></td>
+                <td id="1_4" onclick="Click(this.id)"><img id="i14"/></td>
+                <td id="1_5" onclick="Click(this.id)"><img id="i15"/></td>
+                <td id="1_6" onclick="Click(this.id)"><img id="i16"/></td>
+                <td id="1_7" onclick="Click(this.id)"><img id="i17"/></td>
+                <td id="1_8" onclick="Click(this.id)"><img id="i18"/></td>
+                <td id="1_9" onclick="Click(this.id)"><img id="i19"/></td>
+              </tr>
+              <tr>
+                <td id="2_1" onclick="Click(this.id)"><img id="i21"/></td>
+                <td id="2_2" onclick="Click(this.id)"><img id="i22"/></td>
+                <td id="2_3" onclick="Click(this.id)"><img id="i23"/></td>
+                <td id="2_4" onclick="Click(this.id)"><img id="i24"/></td>
+                <td id="2_5" onclick="Click(this.id)"><img id="i25"/></td>
+                <td id="2_6" onclick="Click(this.id)"><img id="i26"/></td>
+                <td id="2_7" onclick="Click(this.id)"><img id="i27"/></td>
+                <td id="2_8" onclick="Click(this.id)"><img id="i28"/></td>
+                <td id="2_9" onclick="Click(this.id)"><img id="i29"/></td>
+              </tr>
+              <tr>
+                <td id="3_1" onclick="Click(this.id)"><img id="i31"/></td>
+                <td id="3_2" onclick="Click(this.id)"><img id="i32"/></td>
+                <td id="3_3" onclick="Click(this.id)"><img id="i33"/></td>
+                <td id="3_4" onclick="Click(this.id)"><img id="i34"/></td>
+                <td id="3_5" onclick="Click(this.id)"><img id="i35"/></td>
+                <td id="3_6" onclick="Click(this.id)"><img id="i36"/></td>
+                <td id="3_7" onclick="Click(this.id)"><img id="i37"/></td>
+                <td id="3_8" onclick="Click(this.id)"><img id="i38"/></td>
+                <td id="3_9" onclick="Click(this.id)"><img id="i39"/></td>
+              </tr>
+              <tr>
+                <td id="4_1" onclick="Click(this.id)"><img id="i41"/></td>
+                <td id="4_2" onclick="Click(this.id)"><img id="i42"/></td>
+                <td id="4_3" onclick="Click(this.id)"><img id="i43"/></td>
+                <td id="4_4" onclick="Click(this.id)"><img id="i44"/></td>
+                <td id="4_5" onclick="Click(this.id)"><img id="i45"/></td>
+                <td id="4_6" onclick="Click(this.id)"><img id="i46"/></td>
+                <td id="4_7" onclick="Click(this.id)"><img id="i47"/></td>
+                <td id="4_8" onclick="Click(this.id)"><img id="i48"/></td>
+                <td id="4_9" onclick="Click(this.id)"><img id="i49"/></td>
+              </tr>
+              <tr>
+                <td id="5_1" onclick="Click(this.id)"><img id="i51"/></td>
+                <td id="5_2" onclick="Click(this.id)"><img id="i52"/></td>
+                <td id="5_3" onclick="Click(this.id)"><img id="i53"/></td>
+                <td id="5_4" onclick="Click(this.id)"><img id="i54"/></td>
+                <td id="5_5" onclick="Click(this.id)"><img id="i55"/></td>
+                <td id="5_6" onclick="Click(this.id)"><img id="i56"/></td>
+                <td id="5_7" onclick="Click(this.id)"><img id="i57"/></td>
+                <td id="5_8" onclick="Click(this.id)"><img id="i58"/></td>
+                <td id="5_9" onclick="Click(this.id)"><img id="i59"/></td>
+              </tr>
+              <tr>
+                <td id="6_1" onclick="Click(this.id)"><img id="i61"/></td>
+                <td id="6_2" onclick="Click(this.id)"><img id="i62"/></td>
+                <td id="6_3" onclick="Click(this.id)"><img id="i63"/></td>
+                <td id="6_4" onclick="Click(this.id)"><img id="i64"/></td>
+                <td id="6_5" onclick="Click(this.id)"><img id="i65"/></td>
+                <td id="6_6" onclick="Click(this.id)"><img id="i66"/></td>
+                <td id="6_7" onclick="Click(this.id)"><img id="i67"/></td>
+                <td id="6_8" onclick="Click(this.id)"><img id="i68"/></td>
+                <td id="6_9" onclick="Click(this.id)"><img id="i69"/></td>
+              </tr>
+              <tr>
+                <td id="7_1" onclick="Click(this.id)"><img id="i71"/></td>
+                <td id="7_2" onclick="Click(this.id)"><img id="i72"/></td>
+                <td id="7_3" onclick="Click(this.id)"><img id="i73"/></td>
+                <td id="7_4" onclick="Click(this.id)"><img id="i74"/></td>
+                <td id="7_5" onclick="Click(this.id)"><img id="i75"/></td>
+                <td id="7_6" onclick="Click(this.id)"><img id="i76"/></td>
+                <td id="7_7" onclick="Click(this.id)"><img id="i77"/></td>
+                <td id="7_8" onclick="Click(this.id)"><img id="i78"/></td>
+                <td id="7_9" onclick="Click(this.id)"><img id="i79"/></td>
+              </tr>
+              <tr>
+                <td id="8_1" onclick="Click(this.id)"><img id="i81"/></td>
+                <td id="8_2" onclick="Click(this.id)"><img id="i82"/></td>
+                <td id="8_3" onclick="Click(this.id)"><img id="i83"/></td>
+                <td id="8_4" onclick="Click(this.id)"><img id="i84"/></td>
+                <td id="8_5" onclick="Click(this.id)"><img id="i85"/></td>
+                <td id="8_6" onclick="Click(this.id)"><img id="i86"/></td>
+                <td id="8_7" onclick="Click(this.id)"><img id="i87"/></td>
+                <td id="8_8" onclick="Click(this.id)"><img id="i88"/></td>
+                <td id="8_9" onclick="Click(this.id)"><img id="i89"/></td>
+              </tr>
+              <tr>
+                <td id="9_1" onclick="Click(this.id)"><img id="i91"/></td>
+                <td id="9_2" onclick="Click(this.id)"><img id="i92"/></td>
+                <td id="9_3" onclick="Click(this.id)"><img id="i93"/></td>
+                <td id="9_4" onclick="Click(this.id)"><img id="i94"/></td>
+                <td id="9_5" onclick="Click(this.id)"><img id="i95"/></td>
+                <td id="9_6" onclick="Click(this.id)"><img id="i96"/></td>
+                <td id="9_7" onclick="Click(this.id)"><img id="i97"/></td>
+                <td id="9_8" onclick="Click(this.id)"><img id="i98"/></td>
+                <td id="9_9" onclick="Click(this.id)"><img id="i99"/></td>
+              </tr>
+              <tr>
+                <td id="10_1" onclick="Click(this.id)"><img id="i101"/></td>
+                <td id="10_2" onclick="Click(this.id)"><img id="i102"/></td>
+                <td id="10_3" onclick="Click(this.id)"><img id="i103"/></td>
+                <td id="10_4" onclick="Click(this.id)"><img id="i104"/></td>
+                <td id="10_5" onclick="Click(this.id)"><img id="i105"/></td>
+                <td id="10_6" onclick="Click(this.id)"><img id="i106"/></td>
+                <td id="10_7" onclick="Click(this.id)"><img id="i107"/></td>
+                <td id="10_8" onclick="Click(this.id)"><img id="i108"/></td>
+                <td id="10_9" onclick="Click(this.id)"><img id="i109"/></td>
+              </tr>
+              <tr>
+                <td id="11_1" onclick="Click(this.id)"><img id="i111"/></td>
+                <td id="11_2" onclick="Click(this.id)"><img id="i112"/></td>
+                <td id="11_3" onclick="Click(this.id)"><img id="i113"/></td>
+                <td id="11_4" onclick="Click(this.id)"><img id="i114"/></td>
+                <td id="11_5" onclick="Click(this.id)"><img id="i115"/></td>
+                <td id="11_6" onclick="Click(this.id)"><img id="i116"/></td>
+                <td id="11_7" onclick="Click(this.id)"><img id="i117"/></td>
+                <td id="11_8" onclick="Click(this.id)"><img id="i118"/></td>
+                <td id="11_9" onclick="Click(this.id)"><img id="i119"/></td>
+              </tr>
+              
+        </table>
+    </div>
+		
+    <div id="divNguoiChoiCoDo">
+      <table id="tblNguoiChoiCoDo">
+        <tr>
+          <td><img id="iCoDo" src="User/User_Dis.png"/></td>
+        </tr>
+        <tr>
+          <td id="PointCoDo">Point: 0</td>
+        </tr>
+    	</table>
+    </div>
+</div> 
+
+</body>
+</html>
