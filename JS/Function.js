@@ -6,37 +6,34 @@ function LuotDi(){
 
 function GetDiem(Name){
 	switch(Name){
-		case 'Xe':
-			return 50;
-		break;
-		
-		case 'Ma':
-			return 50;
-		break;
-		
-		case 'Tuong':
-			return 50;
-		break;
-		
-		case 'Hau':
+		case '1':
+			return 50;		
+		case '2':
+			return 60;		
+		case '3':
+			return 70;		
+		case '4':
+			return 100;		
+		case '5':
+			return 150;
+		case '6':
 			return 200;
-		break;
-		
-		case 'Vua':
-			return 300;
-		break;
-		
-		case 'Tot':
-			return 10;
-		break;
-		
+		case '7':
+			return 250;
+		case '8':
+			return 300;		
+		case '9':
+			return 350;				
+		case '0':
+			return 400;		
 		default:
 			return 0;
-		break;
+		
 	}
 }
 
 function DoiMau(X, Y){
+	// console.log(X , Y);
 	document.getElementById(X.toString() +"_"+ Y.toString()).style.backgroundColor = "#F6CD61";
 }
 
@@ -72,6 +69,7 @@ function isCoDo(X, Y){
 function isCoDen(X, Y){
 	var Temp = GetName(X.toString()+"_" + Y);
 	Temp = Temp.substring(Temp.indexOf('_') + 1 );	
+	// Temp = Temp.split("_")[1]
 
 	return Temp.localeCompare("Den") == 0 ? true : false;
 }
@@ -83,9 +81,9 @@ function isRong(X, Y){
 }
 
 function isBien(X, Y){
-	if(X < 1 || X > 9)
+	if(X < 1 || X > 12)
 		return true;
-	else if(Y < 1 || Y > 12)
+	else if(Y < 1 || Y > 9)
 		return true;
 	else
 		return false;

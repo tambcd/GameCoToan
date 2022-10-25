@@ -1,6 +1,6 @@
 function Xe(id){
-	var X = id.charAt(0);
-	var Y = id.charAt(1);
+	var X = id.substring(0, id.indexOf('_'));
+	var Y = id.substring(id.indexOf('_')+1);  
 	switch(isCoDo(X, Y))
 	{
 // Cờ đỏ
@@ -13,6 +13,8 @@ function Xe(id){
 				if(isCoDen(X_Top - 1, Y))
 						break;
 				X_Top -= 1; 
+				console.log("T",X_Top);
+
 			}
 			
 			// Đi xuống dưới
@@ -22,6 +24,7 @@ function Xe(id){
 				if(isCoDen(X_Bottom + 1, Y))
 						break;
 				X_Bottom += 1; 
+				console.log(X_Bottom);
 			}
 			
 			// Đi qua trái
@@ -41,8 +44,7 @@ function Xe(id){
 						break;
 				Y_Right += 1; 
 			}
-		break;
-		
+		break;		
 		
 // Cờ Den	
 		case false:
