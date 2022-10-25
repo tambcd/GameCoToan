@@ -55,40 +55,40 @@
       // Kiểm tra này là quân cờ nào để xác định đường đi
       switch (Name) {
         case '1':
-          Hau(id);
+          Hau(id,1);
           break;
         case '2':
-          Hau(id);
+          Hau(id,2);
           break;
         case '3':
-          Hau(id);
+          Hau(id,3);
           break;
         case '4':
-          Hau(id);
+          Hau(id,4);
           break;
         case '5':
-          Hau(id);
+          Hau(id,5);
           break;
         case '6':
-          Hau(id);
+          Hau(id,6);
           break;
         case '7':
-          Hau(id);
+          Hau(id,7);
           break;
         case '8':
-          Hau(id);
+          Hau(id,8);
           break;
         case '9':
-          Hau(id);
+          Hau(id,9);
           break;
 
         default:
-
           // Không click vào ổ chức quân cờ nào
           isClick = !isClick;
           break;
       }
-    } else {
+    } 
+    else {
       var Name = GetName(id);
       Name = Name.substring(0, Name.indexOf('_'));
 
@@ -122,7 +122,7 @@
     <div id="divNguoiChoiCoDen">
       <table id="tblNguoiCoDen">
         <tr>
-          <td><img id="iCoDen" src="User/User_Enb.png" alt="" /></td>
+          <td><img id="iCoDen" src="User/User_Dis.png" alt="" /></td>
         </tr>
         <tr>
           <td id="PointCoDen">Point: 0</td>
@@ -260,7 +260,7 @@
     <div id="divNguoiChoiCoDo">
       <table id="tblNguoiChoiCoDo">
         <tr>
-          <td><img id="iCoDo" src="User/User_Dis.png" /></td>
+          <td><img id="iCoDo" src="User/User_Enb.png" /></td>
         </tr>
         <tr>
           <td id="PointCoDo">Point: 0</td>

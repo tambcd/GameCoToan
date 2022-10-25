@@ -1,4 +1,4 @@
-function Hau(id){
-	Tuong(id);
-	Xe(id);
+function Hau(id,step){
+	Tuong(id,step);
+	Xe(id,step);
 }

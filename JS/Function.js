@@ -33,7 +33,6 @@ function GetDiem(Name){
 }
 
 function DoiMau(X, Y){
-	// console.log(X , Y);
 	document.getElementById(X.toString() +"_"+ Y.toString()).style.backgroundColor = "#F6CD61";
 }
 
@@ -61,27 +60,26 @@ function isChieuVua(Name){
 }
 
 function isCoDo(X, Y){
-	var Temp = GetName(X.toString() +"_"+ Y);
+	var Temp = GetName(X.toString() +"_"+ Y.toString());
 	Temp = Temp.substring(Temp.indexOf('_') + 1 );
 	return Temp.localeCompare("Do") == 0 ? true : false;
+
 }
 
 function isCoDen(X, Y){
-	var Temp = GetName(X.toString()+"_" + Y);
-	Temp = Temp.substring(Temp.indexOf('_') + 1 );	
-	// Temp = Temp.split("_")[1]
-
-	return Temp.localeCompare("Den") == 0 ? true : false;
+	var Temp = GetName(X.toString()+"_" + Y.toString());
+		Temp = Temp.substring(Temp.indexOf('_') + 1 );
+		return Temp.localeCompare("Den") == 0 ? true : false;
 }
 
 function isRong(X, Y){
-	var Temp = GetName(X.toString() +"_" + Y);
+	var Temp = GetName(X.toString() +"_" + Y.toString());
 	Temp = Temp.substring(Temp.indexOf('_') + 1 , Temp.length);
 	return Temp.localeCompare("Rong") == 0 ? true : false;
 }
 
 function isBien(X, Y){
-	if(X < 1 || X > 12)
+	if(X < 1 || X > 11)
 		return true;
 	else if(Y < 1 || Y > 9)
 		return true;
