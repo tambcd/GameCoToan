@@ -60,16 +60,24 @@ function isChieuVua(Name){
 }
 
 function isCoDo(X, Y){
-	var Temp = GetName(X.toString() +"_"+ Y.toString());
-	Temp = Temp.substring(Temp.indexOf('_') + 1 );
-	return Temp.localeCompare("Do") == 0 ? true : false;
-
+	if((X>=1 && (X<=11))&&(Y>=1 && Y<=9)){
+		var Temp = GetName(X.toString() +"_"+ Y.toString());
+		Temp = Temp.substring(Temp.indexOf('_') + 1 );
+		return Temp.localeCompare("Do") == 0 ? true : false;
+	}else{
+		return false;
+	}
 }
 
 function isCoDen(X, Y){
-	var Temp = GetName(X.toString()+"_" + Y.toString());
+	if((X>=1 && (X<=11))&&(Y>=1 && Y<=9)){
+		var Temp = GetName(X.toString()+"_" + Y.toString());
 		Temp = Temp.substring(Temp.indexOf('_') + 1 );
 		return Temp.localeCompare("Den") == 0 ? true : false;
+	}
+	else{
+		return false;
+	}
 }
 
 function isRong(X, Y){
@@ -88,9 +96,9 @@ function isBien(X, Y){
 }
 
 function DiChuyen(id, idMoi){
-	
 	if(id.localeCompare(idMoi) == 0 ||  GetColor(idMoi).localeCompare(Mau.NuocDi) != 0)
 		return false;
+	
 	document.getElementById("i" + idMoi.replace('_', '')).src = document.getElementById("i" + id.replace('_', '')).src;
 	document.getElementById("i" + id.replace('_', '')).src = CoDen.Rong;
 	return true;

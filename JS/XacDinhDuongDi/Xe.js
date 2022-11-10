@@ -10,9 +10,9 @@ function Xe(id,step){
 			var X_Top = parseInt(X);
 			var Step_Top= step;
 			while(!isBien(X_Top - 1, Y) && !isCoDo(X_Top - 1, Y) && Step_Top > 0){
-				DoiMau(X_Top - 1, Y);
 				if(isCoDen(X_Top - 1, Y))
-						break;
+					break;
+				DoiMau(X_Top - 1, Y);
 				X_Top -= 1; 
 				Step_Top-=1;
 
@@ -22,9 +22,9 @@ function Xe(id,step){
 			var X_Bottom = parseInt(X);
 			var Step_Bottom= step;
 			while(!isBien(X_Bottom +1, Y) && !isCoDo(X_Bottom + 1, Y) && Step_Bottom > 0){
-				DoiMau(X_Bottom + 1, Y);
 				if(isCoDen(X_Bottom + 1, Y))
-						break;
+					break;
+				DoiMau(X_Bottom + 1, Y);
 				X_Bottom += 1; 
 				Step_Bottom -=1;
 			}
@@ -33,9 +33,9 @@ function Xe(id,step){
 			var Y_Left = parseInt(Y);
 			var Step_Left = step;
 			while(!isBien(X, Y_Left - 1) && !isCoDo(X, Y_Left - 1) && Step_Left>0){
-				DoiMau(X, Y_Left - 1);
 				if(isCoDen(X, Y_Left - 1))
-						break;
+					break;
+				DoiMau(X, Y_Left - 1);
 				Y_Left -= 1; 
 				Step_Left-=1;
 			}
@@ -44,9 +44,9 @@ function Xe(id,step){
 			var Y_Right = parseInt(Y);
 			var Step_Right=step;
 			while(!isBien(X, Y_Right + 1) &&!isCoDo(X, Y_Right + 1) && Step_Right>0){
-				DoiMau(X, Y_Right + 1);
 				if(isCoDen(X, Y_Right + 1))
 						break;
+				DoiMau(X, Y_Right + 1);
 				Y_Right += 1; 
 				Step_Right-=1;
 			}
@@ -58,19 +58,20 @@ function Xe(id,step){
 			var X_Top = parseInt(X);
 			var Step_Top = step;
 			while(!isBien(X_Top - 1, Y) && !isCoDen(X_Top - 1, Y) && Step_Top >0){
-				DoiMau(X_Top - 1, Y);
 				if(isCoDo(X_Top - 1, Y))
 						break;
+				DoiMau(X_Top - 1, Y);
 				X_Top -= 1; 
 				Step_Top -=1;
 			}
 			
 			// Đi xuống dưới
 			var X_Bottom = parseInt(X);
-			while(!isBien(X_Bottom + 1, Y) && !isCoDen(X_Bottom + 1, Y) & Step_Bottom> 0){
-				DoiMau(X_Bottom + 1, Y);
+			var Step_Bottom = step;
+			while(!isBien(X_Bottom + 1, Y) && !isCoDen(X_Bottom + 1, Y) && Step_Bottom> 0){
 				if(isCoDo(X_Bottom + 1, Y))
-						break;
+					break;
+				DoiMau(X_Bottom + 1, Y);
 				X_Bottom += 1; 
 				Step_Bottom -=1;
 			}
@@ -79,9 +80,9 @@ function Xe(id,step){
 			var Y_Left = parseInt(Y);
 			var Step_Left =step;
 			while(!isBien(X, Y_Left - 1) && !isCoDen(X, Y_Left - 1) && Step_Left>0){
-				DoiMau(X, Y_Left - 1);
 				if(isCoDo(X, Y_Left - 1))
-						break;
+					break;
+				DoiMau(X, Y_Left - 1);
 				Y_Left -= 1; 
 				Step_Left-=1;
 			}
@@ -90,9 +91,9 @@ function Xe(id,step){
 			var Y_Right = parseInt(Y);
 			var Step_Right= step;
 			while(!isBien(X, Y_Right + 1) && !isCoDen(X, Y_Right + 1) &&Step_Right >0 ){
-				DoiMau(X, Y_Right + 1);
 				if(isCoDo(X, Y_Right + 1))
-						break;
+					break;
+				DoiMau(X, Y_Right + 1);
 				Y_Right += 1; 
 				Step_Right-=1;
 			}
