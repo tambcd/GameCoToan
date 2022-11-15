@@ -96,10 +96,14 @@ function isBien(X, Y){
 }
 
 function DiChuyen(id, idMoi){
+	// console.log("idmoi", idMoi)
 	if(id.localeCompare(idMoi) == 0 ||  GetColor(idMoi).localeCompare(Mau.NuocDi) != 0)
 		return false;
 	
 	document.getElementById("i" + idMoi.replace('_', '')).src = document.getElementById("i" + id.replace('_', '')).src;
 	document.getElementById("i" + id.replace('_', '')).src = CoDen.Rong;
+
+
+
 	return true;
 }	

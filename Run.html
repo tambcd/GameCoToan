@@ -93,16 +93,18 @@
       Name = Name.substring(0, Name.indexOf('_'));
 
       if (DiChuyen(Location, id)) {
+
+        console.log("huyid", id);
         if (isQuanDo) {
           PointDo += GetDiem(Name);
-          if (isChieuVua(Name) || PointDo == 880) {
+          if (id==='10_5') {
             alert("QUÂN ĐỎ ĐÃ CHIẾN THẮNG");
             KhoiTao();
           }
           document.getElementById("PointCoDo").innerHTML = "Point: " + PointDo;
         } else {
           PointDen += GetDiem(Name);
-          if (isChieuVua(Name) || PointDen == 880) {
+          if (id==="2_5") {
             alert("QUÂN ĐEN ĐÃ CHIẾN THẮNG");
             KhoiTao();
           }

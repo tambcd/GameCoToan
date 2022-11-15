@@ -332,7 +332,7 @@ function checkAnQuan(X,Y,id, checkCoDo){
 					DoiMau((X+1)+item, (Y-1)-item);
 				}
 			})
-		}
+		} 
 	}
 	console.log("================================")		
 }
