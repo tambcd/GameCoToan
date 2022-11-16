@@ -133,7 +133,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Trên ", QuanCo, Tren,anQuanTren)
 			anQuanTren.forEach((item)=>{
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11) && item>0 && isCoDen((X-1)-item, Y)){
-					DoiMau((X-1)-item, Y);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X-1-i,Y)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X-1)-item, Y);
+					}
 				}
 			})
 		}
@@ -145,7 +154,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Dưới ", QuanCo, Duoi,anQuanDuoi)
 			anQuanDuoi.forEach((item)=>{
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11) && item>0 && isCoDen((X+1)+item, Y)){
-					DoiMau((X+1)+item, Y);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X+1+i,Y)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau((X+1)+item, Y);
+					}
 				}
 			})
 		}
@@ -157,7 +175,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Trái ", QuanCo, Trai,anQuanTrai)
 			anQuanTrai.forEach((item)=>{
 				if(((Y-1)-item>=1 && (Y-1)-item<=9) && item>0 && isCoDen(X, (Y-1)-item)){
-					DoiMau(X, (Y-1)-item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X,Y-1-i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau(X, (Y-1)-item);
+					}
 				}
 			})
 		}
@@ -169,7 +196,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Phải ", QuanCo, Phai,anQuanPhai)
 			anQuanPhai.forEach((item)=>{
 				if(((Y+1)+item>=1 && (Y+1)+item<=9) && item>0 && isCoDen(X, (Y+1)+item)){
-					DoiMau(X, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau(X, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -183,7 +219,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11)&&((Y+1)+item>=1 && (Y+1)+item<=9)
 					&& item>0 && isCoDen((X-1)-item, (Y+1)+item)
 				){
-					DoiMau((X-1)-item, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X-1-i,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau((X-1)-item, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -197,8 +242,17 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11)&&((Y-1)-item>=1 && (Y-1)-item<=9)
 				&& item>0 && isCoDen((X-1)-item, (Y-1)-item)
 			){
+				var check = true;
+				for(var i=1 ;i<item;i++){
+					if(isCoDen(X-1-i,Y-1-i)){
+						check= false;
+						break;
+					}
+				}
+				if(check){					
 					DoiMau((X-1)-item, (Y-1)-item);
 				}
+			}
 			})
 		}
 
@@ -211,7 +265,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11) && ((Y+1)+item>=1 && (Y+1)+item<=9)
 					&& item>0 && isCoDen((X+1)+item, (Y+1)+item)
 				){
-					DoiMau((X+1)+item, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X+1+i,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau((X+1)+item, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -225,7 +288,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11)&&((Y-1)-item>=1 && (Y-1)-item<=9)
 					&& item>0 && isCoDen((X+1)+item, (Y-1)-item)
 				){
-					DoiMau((X+1)+item, (Y-1)-item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDen(X+1+i,Y-1-i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){					
+						DoiMau((X+1)+item, (Y-1)-item);
+					}
 				}
 			})
 		}
@@ -237,7 +309,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Trên ", QuanCo, Tren,anQuanTren)
 			anQuanTren.forEach((item)=>{
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11) && item>0 && isCoDo((X-1)-item, Y)){
-					DoiMau((X-1)-item, Y);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X-1-i,Y)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X-1)-item, Y);
+					}
 				}
 			})
 		}
@@ -249,7 +330,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Dưới ", QuanCo, Duoi,anQuanDuoi)
 			anQuanDuoi.forEach((item)=>{
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11) && item>0 && isCoDo((X+1)+item, Y)){
-					DoiMau((X+1)+item, Y);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X+1+i,Y)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X+1)+item, Y);
+					}
 				}
 			})
 		}
@@ -261,7 +351,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Trái ", QuanCo, Trai,anQuanTrai)
 			anQuanTrai.forEach((item)=>{
 				if(((Y-1)-item>=1 && (Y-1)-item<=9) && item>0 && isCoDo(X, (Y-1)-item)){
-					DoiMau(X, (Y-1)-item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X,Y-1-i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau(X, (Y-1)-item);
+					}
 				}
 			})
 		}
@@ -273,7 +372,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 			console.log("Phải ", QuanCo, Phai,anQuanPhai)
 			anQuanPhai.forEach((item)=>{
 				if(((Y+1)+item>=1 && (Y+1)+item<=9) && item>0 && isCoDo(X, (Y+1)+item)){
-					DoiMau(X, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau(X, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -287,7 +395,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11)&&((Y+1)+item>=1 && (Y+1)+item<=9)
 					&& item>0 && isCoDo((X-1)-item, (Y+1)+item)
 				){
-					DoiMau((X-1)-item, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X-i-1,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X-1)-item, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -301,8 +418,17 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X-1)-item)>=1 && ((X-1)-item)<=11)&&((Y-1)-item>=1 && (Y-1)-item<=9)
 				&& item>0 && isCoDo((X-1)-item, (Y-1)-item)
 			){
+				var check = true;
+				for(var i=1 ;i<item;i++){
+					if(isCoDo(X-i-1,Y-1-i)){
+						check= false;
+						break;
+					}
+				}
+				if(check){
 					DoiMau((X-1)-item, (Y-1)-item);
 				}
+			}
 			})
 		}
 
@@ -315,7 +441,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11) && ((Y+1)+item>=1 && (Y+1)+item<=9)
 					&& item>0 && isCoDo((X+1)+item, (Y+1)+item)
 				){
-					DoiMau((X+1)+item, (Y+1)+item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X+i+1,Y+1+i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X+1)+item, (Y+1)+item);
+					}
 				}
 			})
 		}
@@ -329,7 +464,16 @@ function checkAnQuan(X,Y,id, checkCoDo){
 				if((((X+1)+item)>=1 && ((X+1)+item)<=11)&&((Y-1)-item>=1 && (Y-1)-item<=9)
 					&& item>0 && isCoDo((X+1)+item, (Y-1)-item)
 				){
-					DoiMau((X+1)+item, (Y-1)-item);
+					var check = true;
+					for(var i=1 ;i<item;i++){
+						if(isCoDo(X+i+1,Y-1-i)){
+							check= false;
+							break;
+						}
+					}
+					if(check){
+						DoiMau((X+1)+item, (Y-1)-item);
+					}
 				}
 			})
 		} 
