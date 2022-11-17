@@ -14,7 +14,7 @@ body{
 /*CSS Div ThongTin*/
 #divNguoiChoiCoDen{
 	float:left;
-	width: 25%;
+	width: 20%;
 	height:100%;
 }
 #tblNguoiCoDen {
@@ -83,13 +83,29 @@ body{
 }
 
 #BanCo td:hover {
-  border-width: 2px;
-  border-collapse: collapse;
-  border-style: solid;
-  border-color: #1BA39C;
+	border-width: 2px;
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #1BA39C;
 }
 
 img{
 	display: block;
     margin: 0 auto;
+}
+
+#btn-close{
+	width: 32px;
+    height: 32px;
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    position: fixed;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
+	cursor: pointer;
 }

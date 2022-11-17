@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>GAME Toan</title>
+<title>GAME CỜ TOÁN VIỆT NAM</title>
 </head>
 <style>
 	p{
@@ -50,18 +50,24 @@
 </style>
 <script>
 	function Go(){
+		localStorage.setItem("isAI",document.getElementById("game_mode").value);
 		window.location.href = "Run.html";
 	}
 </script>
 <body>
     <div>
-    	<p>GAME CỜ TOÁN VIỆT NAM ĐƠN GIẢN </p>
-    	<img src="Icon/Icon_.png" width="217" height="218" alt=""/>
+		<p>GAME CỜ TOÁN VIỆT NAM ĐƠN GIẢN </p>
+		<img src="Icon/Icon_.png" width="217" height="218" alt=""/>
     <div>
-    	<input class="btn" type="button" value="BẮT ĐẦU" onClick="Go()"/>
+		<select id="game_mode" style="height: 30px; margin-top: 20px">
+			<option value="0">Chơi với người</option>
+			<option value="1">Chơi với Máy</option>
+		</select>
+		<br>
+		<input class="btn" type="button" value="BẮT ĐẦU" onClick="Go()"/>
         <br>
         <p id="Design">
-        	Design By | Team (Tam, thuy, Huy, Ngân ).
+			Design By | Team (Tam, thuy, Huy, Ngân ).
         </p>
     </div>
     </div>

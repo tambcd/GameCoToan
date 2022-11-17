@@ -19,6 +19,7 @@
   var isClick = false, isQuanDo = false; isQuanDen = false;
   var Location = "00";
   var PointDo = 0, PointDen = 0;
+  var isAI = parseInt(localStorage.getItem("isAI"));
 
   function KhoiTao() {
     VeBanCoTrangDen();
@@ -114,8 +115,12 @@
           }
           document.getElementById("PointCoDen").innerHTML = "Point: " + PointDen;
         }
-        isQuanDo = false;
-        QuanDenDi(id)
+        if(isAI){
+          isQuanDo = false;
+          QuanDenDi(id)
+        }else{
+          isQuanDo =! isQuanDo;
+        }
         LuotDi();
       }
       VeBanCoTrangDen();
@@ -138,15 +143,28 @@
     // idDen.map((item)=>Hau(item[0],item[1]))
     isQuanDo = true;
   }
+
+  
+  function Thoat(){
+    console.log("back")
+    window.location.href = "index.html"
+  }
+
 </script>
 
 <body onload="KhoiTao()">
+  <div id="btn-close" onclick="Thoat()">
+    X
+  </div>
 
   <div id="divMain">
     <div id="divNguoiChoiCoDen">
       <table id="tblNguoiCoDen">
         <tr>
           <td><img id="iCoDen" src="User/User_Dis.png" alt="" /></td>
+        </tr>
+        <tr>
+          <td id="NguoiChoiCoDen"></td>
         </tr>
         <tr>
           <td id="PointCoDen">Point: 0</td>
@@ -287,12 +305,25 @@
           <td><img id="iCoDo" src="User/User_Enb.png" /></td>
         </tr>
         <tr>
+          <td id="NguoiChoiCoDo"></td>
+        </tr>
+        <tr>
           <td id="PointCoDo">Point: 0</td>
         </tr>
       </table>
     </div>
   </div>
 
+  <script>
+    document.getElementById("btn-close").addEventListener("click",Thoat);
+    if(isAI){
+      document.getElementById("NguoiChoiCoDo").innerText = "Bạn"
+      document.getElementById("NguoiChoiCoDen").innerText = "Máy"
+    } else{
+      document.getElementById("NguoiChoiCoDo").innerText = "Người chơi 1"
+      document.getElementById("NguoiChoiCoDen").innerText = "Người chơi 2"
+    }
+  </script>
 </body>
 
 </html>

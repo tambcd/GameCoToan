@@ -72,8 +72,11 @@ function Tuong(id, step){
 			while( !isBien(iX - 1, iY + 1) && !isCoDen(iX - 1, iY + 1) && step_Top_Right>0){
 				if(isCoDo(iX -1, iY +1))
 					break;
-				// DoiMau(iX - 1, iY + 1);
-				TongNuocDi.push((iX-1)+"_"+(iY+1))
+				if(isAI){
+					TongNuocDi.push((iX-1)+"_"+(iY+1))
+				}else{
+					DoiMau(iX - 1, iY + 1);
+				}
 				iX--;
 				iY++;
 				step_Top_Right-=1;
@@ -86,9 +89,11 @@ function Tuong(id, step){
 			while(!isBien(iX - 1, iY - 1) && !isCoDen(iX - 1, iY -1) && step_Top_Left >0){
 				if(isCoDo(iX -1, iY -1))
 					break;
-				
-				// DoiMau(iX -1, iY -1);
-				TongNuocDi.push((iX-1)+"_"+(iY-1))
+				if(isAI){
+					TongNuocDi.push((iX-1)+"_"+(iY-1))
+				}else{
+					DoiMau(iX -1, iY -1);
+				}
 				iX--;
 				iY--;
 				step_Top_Left-=1;
@@ -101,8 +106,11 @@ function Tuong(id, step){
 			while(!isBien(iX + 1, iY - 1) && !isCoDen(iX + 1, iY - 1)&& step_Bottom_Left>0){
 				if(isCoDo(iX + 1, iY - 1))
 					break;
-				// DoiMau(iX + 1, iY - 1);
-				TongNuocDi.push((iX+1)+"_"+(iY-1))
+				if(isAI){
+					TongNuocDi.push((iX+1)+"_"+(iY-1))
+				}else{
+					DoiMau(iX + 1, iY - 1);
+				}
 				iX++;
 				iY--;
 				step_Bottom_Left-=1;
@@ -115,8 +123,12 @@ function Tuong(id, step){
 			while(!isBien(iX + 1, iY + 1) && !isCoDen(iX + 1, iY + 1) && step_Bottom_Right>0){
 				if(isCoDo(iX + 1, iY + 1))
 					break;
-				// DoiMau(iX + 1, iY + 1);
-				TongNuocDi.push((iX+1)+"_"+(iY+1))
+					
+				if(isAI){
+					TongNuocDi.push((iX+1)+"_"+(iY+1))
+				}else{
+					DoiMau(iX + 1, iY + 1);
+				}
 				iX++;
 				iY++;
 				step_Bottom_Right-=1;
@@ -321,8 +333,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau((X-1)-item, Y);
-						TongNuocDi.push((X-1-item)+"_"+(Y))
+						if(isAI){
+							TongNuocDi.push((X-1-item)+"_"+(Y))
+						}else{
+							DoiMau((X-1)-item, Y);
+						}
 					}
 				}
 			})
@@ -343,8 +358,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau((X+1)+item, Y);
-						TongNuocDi.push((X+1+item)+"_"+(Y))
+						if(isAI){
+							TongNuocDi.push((X+1+item)+"_"+(Y))
+						}else{
+							DoiMau((X+1)+item, Y);
+						}
 					}
 				}
 			})
@@ -365,8 +383,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau(X, (Y-1)-item);
-						TongNuocDi.push((X)+"_"+(Y-1-item))
+						if(isAI){
+							TongNuocDi.push((X)+"_"+(Y-1-item))
+						}else{
+							DoiMau(X, (Y-1)-item);
+						}
 					}
 				}
 			})
@@ -387,8 +408,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau(X, (Y+1)+item);
-						TongNuocDi.push((X)+"_"+(Y+1+item))
+						if(isAI){		
+							TongNuocDi.push((X)+"_"+(Y+1+item))
+						}else{
+							DoiMau(X, (Y+1)+item);
+						}
 					}
 				}
 			})
@@ -411,8 +435,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau((X-1)-item, (Y+1)+item);
-						TongNuocDi.push((X-1-item)+"_"+(Y+1+item))
+						if(isAI){							
+							TongNuocDi.push((X-1-item)+"_"+(Y+1+item))
+						}else{
+							DoiMau((X-1)-item, (Y+1)+item);
+						}
 					}
 				}
 			})
@@ -435,8 +462,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 					}
 				}
 				if(check){
-					// DoiMau((X-1)-item, (Y-1)-item);
+					if(isAI){
 						TongNuocDi.push((X-1-item)+"_"+(Y-1-item))
+					}else{
+						DoiMau((X-1)-item, (Y-1)-item);
+					}
 				}
 			}
 			})
@@ -459,8 +489,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau((X+1)+item, (Y+1)+item);
-						TongNuocDi.push((X+1)+item, (Y+1)+item);
+						if(isAI){
+							TongNuocDi.push((X+1)+item, (Y+1)+item);
+						}else{
+							DoiMau((X+1)+item, (Y+1)+item);
+						}
 					}
 				}
 			})
@@ -483,8 +516,11 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						// DoiMau((X+1)+item, (Y-1)-item);
-						TongNuocDi.push((X+1)+item, (Y-1)-item);
+						if(isAI){
+							TongNuocDi.push((X+1)+item, (Y-1)-item);
+						}else{
+							DoiMau((X+1)+item, (Y-1)-item);
+						}
 					}
 				}
 			})

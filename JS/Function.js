@@ -134,8 +134,14 @@ function DiChuyen(id, idMoi){
 	var X = id.substring(0, id.indexOf('_'));
 	var Y = id.substring(id.indexOf('_')+1);
 
-	if(id.localeCompare(idMoi) == 0 ||  (GetColor(idMoi).localeCompare(Mau.NuocDi) != 0 && isCoDo(X,Y)))
-		return false;	
+	if(isAI){
+		if(id.localeCompare(idMoi) == 0 ||  (GetColor(idMoi).localeCompare(Mau.NuocDi) != 0 && isCoDo(X,Y)))
+			return false;
+	}else{
+		if(id.localeCompare(idMoi) == 0 ||  GetColor(idMoi).localeCompare(Mau.NuocDi))
+			return false;
+	}
+	
 	document.getElementById("i" + idMoi.replace('_', '')).src = document.getElementById("i" + id.replace('_', '')).src;
 	document.getElementById("i" + id.replace('_', '')).src = CoDen.Rong;
 	return true;
