@@ -1,6 +1,7 @@
 function Tuong(id, step){
 	var X = id.substring(0, id.indexOf('_'));
 	var Y = id.substring(id.indexOf('_')+1);  
+	// console.log("huy test", id, step,isCoDo(X, Y));
 	var checkCoDo = isCoDo(X, Y);
 	var iX = 0, iY = 0;
 	checkAnQuan(parseInt(X), parseInt(Y), id, checkCoDo);
@@ -60,19 +61,19 @@ function Tuong(id, step){
 			}
 		break;
 		
-// Co den
 		case false:
-		
+			console.log("check cờ đen");
+			// var TongDi=[]
+			// Co den
 			// Đi lên bên phải
 			iX = parseInt(X);
 			iY = parseInt(Y);
 			var step_Top_Right =step;
 			while( !isBien(iX - 1, iY + 1) && !isCoDen(iX - 1, iY + 1) && step_Top_Right>0){
-
 				if(isCoDo(iX -1, iY +1))
 					break;
-
-				DoiMau(iX - 1, iY + 1);
+				// DoiMau(iX - 1, iY + 1);
+				TongNuocDi.push((iX-1)+"_"+(iY+1))
 				iX--;
 				iY++;
 				step_Top_Right-=1;
@@ -86,7 +87,8 @@ function Tuong(id, step){
 				if(isCoDo(iX -1, iY -1))
 					break;
 				
-				DoiMau(iX -1, iY -1);
+				// DoiMau(iX -1, iY -1);
+				TongNuocDi.push((iX-1)+"_"+(iY-1))
 				iX--;
 				iY--;
 				step_Top_Left-=1;
@@ -99,7 +101,8 @@ function Tuong(id, step){
 			while(!isBien(iX + 1, iY - 1) && !isCoDen(iX + 1, iY - 1)&& step_Bottom_Left>0){
 				if(isCoDo(iX + 1, iY - 1))
 					break;
-				DoiMau(iX + 1, iY - 1);
+				// DoiMau(iX + 1, iY - 1);
+				TongNuocDi.push((iX+1)+"_"+(iY-1))
 				iX++;
 				iY--;
 				step_Bottom_Left-=1;
@@ -112,7 +115,8 @@ function Tuong(id, step){
 			while(!isBien(iX + 1, iY + 1) && !isCoDen(iX + 1, iY + 1) && step_Bottom_Right>0){
 				if(isCoDo(iX + 1, iY + 1))
 					break;
-				DoiMau(iX + 1, iY + 1);
+				// DoiMau(iX + 1, iY + 1);
+				TongNuocDi.push((iX+1)+"_"+(iY+1))
 				iX++;
 				iY++;
 				step_Bottom_Right-=1;
@@ -317,7 +321,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau((X-1)-item, Y);
+						// DoiMau((X-1)-item, Y);
+						TongNuocDi.push((X-1-item)+"_"+(Y))
 					}
 				}
 			})
@@ -338,7 +343,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau((X+1)+item, Y);
+						// DoiMau((X+1)+item, Y);
+						TongNuocDi.push((X+1+item)+"_"+(Y))
 					}
 				}
 			})
@@ -359,7 +365,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau(X, (Y-1)-item);
+						// DoiMau(X, (Y-1)-item);
+						TongNuocDi.push((X)+"_"+(Y-1-item))
 					}
 				}
 			})
@@ -380,7 +387,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau(X, (Y+1)+item);
+						// DoiMau(X, (Y+1)+item);
+						TongNuocDi.push((X)+"_"+(Y+1+item))
 					}
 				}
 			})
@@ -403,7 +411,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau((X-1)-item, (Y+1)+item);
+						// DoiMau((X-1)-item, (Y+1)+item);
+						TongNuocDi.push((X-1-item)+"_"+(Y+1+item))
 					}
 				}
 			})
@@ -426,7 +435,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 					}
 				}
 				if(check){
-					DoiMau((X-1)-item, (Y-1)-item);
+					// DoiMau((X-1)-item, (Y-1)-item);
+						TongNuocDi.push((X-1-item)+"_"+(Y-1-item))
 				}
 			}
 			})
@@ -449,7 +459,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau((X+1)+item, (Y+1)+item);
+						// DoiMau((X+1)+item, (Y+1)+item);
+						TongNuocDi.push((X+1)+item, (Y+1)+item);
 					}
 				}
 			})
@@ -472,7 +483,8 @@ function checkAnQuan(X,Y,id, checkCoDo){
 						}
 					}
 					if(check){
-						DoiMau((X+1)+item, (Y-1)-item);
+						// DoiMau((X+1)+item, (Y-1)-item);
+						TongNuocDi.push((X+1)+item, (Y-1)-item);
 					}
 				}
 			})

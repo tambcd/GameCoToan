@@ -11,15 +11,12 @@
 <script type="text/javascript" src="JS/Sources.js"></script>
 <script type="text/javascript" src="JS/KhoiTao.js"></script>
 <script type="text/javascript" src="JS/Function.js"></script>
-<script type="text/javascript" src="JS/XacDinhDuongDi/Tot.js"></script>
-<script type="text/javascript" src="JS/XacDinhDuongDi/Vua.js"></script>
 <script type="text/javascript" src="JS/XacDinhDuongDi/Xe.js"></script>
 <script type="text/javascript" src="JS/XacDinhDuongDi/Tuong.js"></script>
-<script type="text/javascript" src="JS/XacDinhDuongDi/Ma.js"></script>
 <script type="text/javascript" src="JS/XacDinhDuongDi/Hau.js"></script>
 
 <script>
-  var isClick = false, isQuanDo = false;
+  var isClick = false, isQuanDo = false; isQuanDen = false;
   var Location = "00";
   var PointDo = 0, PointDen = 0;
 
@@ -32,6 +29,7 @@
     PointDen = 0;
     isClick = false;
     isQuanDo = true;
+    isQuanDen = false;
   }
 
   // Cờ đỏ đi trước
@@ -40,14 +38,20 @@
     var X = id.substring(0, id.indexOf('_'));
     var Y = id.substring(id.indexOf('_') + 1);
 
+    // if(isQuanDen){
+    //   alert("hello")
+    //   isQuanDo = true;
+    //   return;
+
+    // }
     isClick = !isClick;
+
     if (isClick) {
       if (isCoDo(X, Y) != isQuanDo) {
+        // console.log(id)
         isClick = !isClick;
         return;
       }
-    }
-    if (isClick) {
       var Name = GetName(id);
       Name = Name.substring(0, Name.indexOf('_'));
       Location = id;
@@ -55,31 +59,31 @@
       // Kiểm tra này là quân cờ nào để xác định đường đi
       switch (Name) {
         case '1':
-          Hau(id,1);
+          Hau(id, 1);
           break;
         case '2':
-          Hau(id,2);
+          Hau(id, 2);
           break;
         case '3':
-          Hau(id,3);
+          Hau(id, 3);
           break;
         case '4':
-          Hau(id,4);
+          Hau(id, 4);
           break;
         case '5':
-          Hau(id,5);
+          Hau(id, 5);
           break;
         case '6':
-          Hau(id,6);
+          Hau(id, 6);
           break;
         case '7':
-          Hau(id,7);
+          Hau(id, 7);
           break;
         case '8':
-          Hau(id,8);
+          Hau(id, 8);
           break;
         case '9':
-          Hau(id,9);
+          Hau(id, 9);
           break;
 
         default:
@@ -87,34 +91,52 @@
           isClick = !isClick;
           break;
       }
-    } 
+    }
     else {
       var Name = GetName(id);
       Name = Name.substring(0, Name.indexOf('_'));
 
       if (DiChuyen(Location, id)) {
 
-        console.log("huyid", id);
+        // console.log("huyid", id);
         if (isQuanDo) {
           PointDo += GetDiem(Name);
-          if (id==='10_5') {
+          if (id === '10_5') {
             alert("QUÂN ĐỎ ĐÃ CHIẾN THẮNG");
             KhoiTao();
           }
           document.getElementById("PointCoDo").innerHTML = "Point: " + PointDo;
         } else {
           PointDen += GetDiem(Name);
-          if (id==="2_5") {
+          if (id === "2_5") {
             alert("QUÂN ĐEN ĐÃ CHIẾN THẮNG");
             KhoiTao();
           }
           document.getElementById("PointCoDen").innerHTML = "Point: " + PointDen;
         }
-        isQuanDo = !isQuanDo;
+        isQuanDo = false;
+        QuanDenDi(id)
         LuotDi();
       }
       VeBanCoTrangDen();
     }
+  }
+
+  function QuanDenDi(id) {
+    // console.log("den di", id);
+    var idDen = [];
+    for (var i = 1; i < 12; i++) {
+      for (var j = 1; j < 10; j++) {
+        if (isCoDen(i, j) && i !== 10 && j !== 5) {
+          // console.log(i+"_"+j)
+          idDen.push([i + "_" + j,parseInt(GetName(i+"_"+j).split("_")[0])]);
+        }
+      }
+    }
+    // console.log(idDen);
+    Hau(idDen[Math.floor(Math.random() * idDen.length)][0],idDen[Math.floor(Math.random() * idDen.length)][1])
+    // idDen.map((item)=>Hau(item[0],item[1]))
+    isQuanDo = true;
   }
 </script>
 

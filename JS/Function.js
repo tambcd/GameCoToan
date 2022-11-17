@@ -1,3 +1,38 @@
+_1 = 10;
+_2 = 20;
+_3 = 30;
+_4 = 40;
+_5 = 50;
+_6 = 60;
+_7 = 70;
+_8 = 80;
+_9 = 90;
+_0 = 990;
+
+
+arrCore = [[_1,_2,_3,_4,_5,_6,_7,_8,_9],
+			[0,0,0,0,_0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,0,0,0,0,0]	,
+			[0,0,0,0,-_0,0,0,0,0]	,
+			[-_1,-_2,-_3,-_4,-_5,-_6,-_7,-_8,-_9]	,			
+			]
+
+function AI(currentStatus,deep){
+	nameB = '1',
+	IdB='1_1'
+
+	if(deep ===0){
+		return [nameB,IsB]
+	}
+	
+
+}
 function LuotDi(){
 	var Temp = document.getElementById("iCoDen").src;
 	document.getElementById("iCoDen").src = document.getElementById("iCoDo").src;
@@ -55,9 +90,7 @@ function GetName(id){
 	}
 }
 
-function isChieuVua(Name){
-	return Name.localeCompare("Vua") == 0 ? true : false;
-}
+
 
 function isCoDo(X, Y){
 	if((X>=1 && (X<=11))&&(Y>=1 && Y<=9)){
@@ -97,13 +130,13 @@ function isBien(X, Y){
 
 function DiChuyen(id, idMoi){
 	// console.log("idmoi", idMoi)
-	if(id.localeCompare(idMoi) == 0 ||  GetColor(idMoi).localeCompare(Mau.NuocDi) != 0)
-		return false;
 	
+	var X = id.substring(0, id.indexOf('_'));
+	var Y = id.substring(id.indexOf('_')+1);
+
+	if(id.localeCompare(idMoi) == 0 ||  (GetColor(idMoi).localeCompare(Mau.NuocDi) != 0 && isCoDo(X,Y)))
+		return false;	
 	document.getElementById("i" + idMoi.replace('_', '')).src = document.getElementById("i" + id.replace('_', '')).src;
 	document.getElementById("i" + id.replace('_', '')).src = CoDen.Rong;
-
-
-
 	return true;
 }	

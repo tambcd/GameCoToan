@@ -60,7 +60,8 @@ function Xe(id,step){
 			while(!isBien(X_Top - 1, Y) && !isCoDen(X_Top - 1, Y) && Step_Top >0){
 				if(isCoDo(X_Top - 1, Y))
 						break;
-				DoiMau(X_Top - 1, Y);
+				// DoiMau(X_Top - 1, Y);
+				TongNuocDi.push((X_Top-1)+"_"+(Y))
 				X_Top -= 1; 
 				Step_Top -=1;
 			}
@@ -71,7 +72,8 @@ function Xe(id,step){
 			while(!isBien(X_Bottom + 1, Y) && !isCoDen(X_Bottom + 1, Y) && Step_Bottom> 0){
 				if(isCoDo(X_Bottom + 1, Y))
 					break;
-				DoiMau(X_Bottom + 1, Y);
+				// DoiMau(X_Bottom + 1, Y);
+				TongNuocDi.push((X_Bottom+1)+"_"+(Y))
 				X_Bottom += 1; 
 				Step_Bottom -=1;
 			}
@@ -82,7 +84,8 @@ function Xe(id,step){
 			while(!isBien(X, Y_Left - 1) && !isCoDen(X, Y_Left - 1) && Step_Left>0){
 				if(isCoDo(X, Y_Left - 1))
 					break;
-				DoiMau(X, Y_Left - 1);
+				// DoiMau(X, Y_Left - 1);
+				TongNuocDi.push((X)+"_"+(Y_Left-1))
 				Y_Left -= 1; 
 				Step_Left-=1;
 			}
@@ -93,7 +96,8 @@ function Xe(id,step){
 			while(!isBien(X, Y_Right + 1) && !isCoDen(X, Y_Right + 1) &&Step_Right >0 ){
 				if(isCoDo(X, Y_Right + 1))
 					break;
-				DoiMau(X, Y_Right + 1);
+				// DoiMau(X, Y_Right + 1);
+				TongNuocDi.push((X)+"_"+(Y_Right+1))
 				Y_Right += 1; 
 				Step_Right-=1;
 			}
